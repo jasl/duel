@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   include Oauthable
+
+  has_many :subjects
 end

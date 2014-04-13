@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :subjects
+
   root to: 'home#index'
   get 'about' => 'home#about'
 

@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @subject.title
+p
+  strong Objective:
+  = @subject.objective
+p
+  strong Description:
+  = @subject.description
+p
+  strong Accept token:
+  = @subject.accept_token
+p
+  strong User:
+  = @subject.user
+
+= link_to 'Edit', edit_subject_path(@subject)
+'|
+= link_to 'Back', subjects_path

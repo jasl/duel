@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413031150) do
+ActiveRecord::Schema.define(version: 20140413051929) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20140413031150) do
   end
 
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"
+
+  create_table "subjects", force: true do |t|
+    t.string   "title",        null: false
+    t.string   "objective",    null: false
+    t.text     "description"
+    t.string   "accept_token", null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subjects", ["accept_token"], name: "index_subjects_on_accept_token", unique: true
+  add_index "subjects", ["user_id"], name: "index_subjects_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

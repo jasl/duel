@@ -26,6 +26,9 @@ gem 'spring', group: :development
 
 # User athentication
 gem 'devise'
+
+# Oauth
+gem 'github_api'
 gem 'omniauth-oauth2'
 gem 'omniauth-github'
 
