@@ -3,11 +3,13 @@ class Challenge < ActiveRecord::Base
   belongs_to :subject
 
   def good
-    self.increment :favorers_count, 1
+    increment :favorers_count, 1
+    save
   end
 
   def bad
-    self.increment :favorers_count, -1
+    increment :favorers_count, -1
+    save
   end
 
   def repository_url

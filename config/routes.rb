@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :subjects do
     resources :challenges, only: [:create] do
-      post 'good'
-      post 'bad'
+      member do
+        post 'good'
+        post 'bad'
+      end
     end
   end
 

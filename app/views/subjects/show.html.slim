@@ -33,10 +33,10 @@ p
         td = link_to 'watch', c.repository_url, target: '_blank'
         td
           = c.favorers_count
-          - if can_vote?(c.id)
-            = link_to 'good!', subject_challenge_good_url(@subject, c), method: :post
+          - if can_vote?(c)
+            = link_to 'good!', good_subject_challenge_url(@subject, c), method: :post
         td
           = c.objectors_count
-          - if can_vote?(c.id)
-            = link_to 'bad!', subject_challenge_bad_url(@subject, c), method: :post
+          - if can_vote?(c)
+            = link_to 'bad!', bad_subject_challenge_url(@subject, c), method: :post
 
