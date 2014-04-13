@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repository_id: MyString
+  favorers_count: 1
+  objectors_count: 1
+  user_id: 
+  subject_id: 
+
+two:
+  repository_id: MyString
+  favorers_count: 1
+  objectors_count: 1
+  user_id: 
+  subject_id: 
