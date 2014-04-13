@@ -1,7 +1,6 @@
 module SubjectsHelper
   def can_vote?(c)
-    return true unless cookies[:voted]
-    !cookies[:voted].include?(c.id.to_s)
+    !cookies[c.id.to_s]
   end
 
   def can_challenge?(subject, user)

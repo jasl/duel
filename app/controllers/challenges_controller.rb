@@ -4,8 +4,7 @@ class ChallengesController < ApplicationController
   before_action :set_challenge, except: [:create]
 
   after_action only: [:good, :bad] do
-    cookies[:voted] ||= []
-    cookies[:voted]<< @challenge.id
+    cookies[@challenge.id.to_s] = true
   end
 
   def good
