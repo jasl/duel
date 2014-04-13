@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
   prepend_before_action :authenticate_user!
 
-  before_action :set_subject, except: [:index]
+  before_action :set_subject, except: [:index, :new, :create]
 
   # GET /subjects
   # GET /subjects.json
