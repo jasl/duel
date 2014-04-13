@@ -1,2 +1,8 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+.jumbotron
+  h1 Duel!
+  p
+    | You are code's warrior! make a challenge with others to reward glory!
+  - if user_signed_in?
+    = link_to 'Create a challenge!', new_subject_url, class: 'btn btn-large btn-primary'
+  - else
+    = link_to 'Sign in by Github', user_omniauth_authorize_url(:github), class: 'btn btn-large btn-primary'

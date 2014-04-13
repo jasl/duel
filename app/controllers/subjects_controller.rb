@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
   prepend_before_action :authenticate_user!
 
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_subject, except: [:index]
 
   # GET /subjects
   # GET /subjects.json
@@ -61,6 +61,12 @@ class SubjectsController < ApplicationController
       format.html { redirect_to subjects_url }
       format.json { head :no_content }
     end
+  end
+
+  def invite
+    @subject.challenge current_user
+
+    redirect_to @subject
   end
 
   private

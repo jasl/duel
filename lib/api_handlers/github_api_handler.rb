@@ -9,6 +9,10 @@ class GithubApiHandler
     @login = @client.users.get.login
   end
 
+  def find_repository(repo)
+    client.repos.get login, repo
+  end
+
   def create_repository(name, description)
     begin
       client.repos.create name: name, description: description

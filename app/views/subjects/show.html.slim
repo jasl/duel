@@ -1,21 +1,42 @@
-p#notice = notice
+.jumbotron
+  h1
+    = @subject.title
+  h2
+    | Creator:
+  p
+    = @subject.user.email
+  h2
+    | Objective:
+  p
+    = @subject.objective
 
-p
-  strong Title:
-  = @subject.title
-p
-  strong Objective:
-  = @subject.objective
-p
-  strong Description:
+  p
+    - if can_challenge?(@subject, current_user)
+      = link_to 'I challenge!', subject_challenges_url(@subject), method: :post, class: 'btn btn-large btn-primary'
+    - else
+      | You have already accepted the challenge, &nbsp;
+      = link_to 'watch your repository.', current_user_repository(@subject, current_user).repository_url, target: '_blank'
+p.lead
   = @subject.description
-p
-  strong Accept token:
-  = @subject.accept_token
-p
-  strong User:
-  = @subject.user
 
-= link_to 'Edit', edit_subject_path(@subject)
-'|
-= link_to 'Back', subjects_path
+p
+  | Challengers
+  table.table
+    tr
+      th User
+      th Url
+      th Good
+      th Bad
+    - @subject.challenges.each do |c|
+      tr
+        td = c.user.email
+        td = link_to 'watch', c.repository_url, target: '_blank'
+        td
+          = c.favorers_count
+          - if can_vote?(c.id)
+            = link_to 'good!', subject_challenge_good_url(@subject, c), method: :post
+        td
+          = c.objectors_count
+          - if can_vote?(c.id)
+            = link_to 'bad!', subject_challenge_bad_url(@subject, c), method: :post
+

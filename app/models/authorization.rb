@@ -8,6 +8,8 @@ class Authorization < ActiveRecord::Base
   after_find :mount_api_handler
   attr_reader :handler
 
+  delegate :create_repository, :fork_repository, :login, :find_repository, to: :handler
+
   class<< self
     def find_by_provider_and_uid(provider, uid)
       where(provider: provider, uid: uid.to_s).first

@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :subjects
   has_many :challenges
+
+  def github_authorization
+    authorizations.where(provider: 'github').first
+  end
 end
