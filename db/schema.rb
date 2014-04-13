@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413051929) do
+ActiveRecord::Schema.define(version: 20140413053939) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20140413051929) do
   end
 
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"
+
+  create_table "challenges", force: true do |t|
+    t.string   "repository_id",               null: false
+    t.integer  "favorers_count",  default: 0
+    t.integer  "objectors_count", default: 0
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "challenges", ["subject_id"], name: "index_challenges_on_subject_id"
+  add_index "challenges", ["user_id"], name: "index_challenges_on_user_id"
 
   create_table "subjects", force: true do |t|
     t.string   "title",        null: false
